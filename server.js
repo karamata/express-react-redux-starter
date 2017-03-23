@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const fs = require('fs');
-const isUseHTTPs = false;
+const isUseHTTPs = true;
 
 function resolveURL(url) {
     var isWin = !!process.platform.match(/^win/);
@@ -50,5 +50,5 @@ require('./signaling-server.js')(httpServer, function(socket) {
 });
 
 httpServer.listen(port, () => {
-  console.log('app listening on', port);
+  console.log('server listening on', port);
 });
