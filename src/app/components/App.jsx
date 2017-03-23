@@ -1,18 +1,23 @@
 import React, { PropTypes } from 'react';
-import { Grid, Row, Col, Button } from 'react-bootstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
+import LeftContainer from './container/LeftContainer';
+import RightContainer from './container/RightContainer';
 
 class App extends React.Component {
   render() {
     return (
-      <Grid fluid>
+      <Grid className="class-container" fluid>
         <Row>
-          <Col xs={12} md={9}>
-            <Button bsStyle="success">Success</Button>
+          <Col xs={12} md={8}>
+            <Grid>
+              <LeftContainer/>
+            </Grid>
           </Col>
-          <Col xs={12} md={3}>
-            <Button bsStyle="primary">Primary</Button>
+          <Col xs={12} md={4}>
+            <RightContainer/>
           </Col>
         </Row>
+        <Row></Row>
       </Grid>
     );
   }
