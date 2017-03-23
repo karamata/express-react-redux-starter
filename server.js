@@ -24,7 +24,7 @@ if (isUseHTTPs) {
     httpServer = server.createServer(app);
 }
 
-app.use(express.static('./'));
+app.use(express.static('./static'));
 app.use(express.static('dist'));
 
 app.get('*', (req, res) => {

@@ -2,7 +2,7 @@ var Path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var Webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 var isProduction = process.env.NODE_ENV === 'production';
 var cssOutputPath = isProduction ? '/styles/app.[hash].css' : '/styles/app.css';
 var jsOutputPath = isProduction ? '/scripts/app.[hash].js' : '/scripts/app.js';
@@ -25,6 +25,11 @@ var webpackConfig = {
     new HtmlWebpackPlugin({
       template: Path.join(__dirname, './src/index.html'),
     }),
+    new CopyWebpackPlugin(
+      [
+      { from: './static/**/*', to: './'}
+      ]
+    ),
   ],
   module: {
     loaders: [{
