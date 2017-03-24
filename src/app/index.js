@@ -1,15 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore } from 'redux';
 import App from './components/App';
 import reducers from './reducers';
-import './rtcmulticonnection/RTCMultiConnection';
 import { ROOM_ROLE } from './constants';
 import { openClassAction, joinClassAction} from './actions';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
-const store = createStoreWithMiddleware(reducers);
+const store = createStore(reducers)
 
 const userLogin = {
   userId: 1,
@@ -21,6 +19,20 @@ const userLogin = {
 const course = {
   courseCode: 'FAGWDFAD'
 };
+
+initWindowSize() {
+  const body = document.body;
+  const html = document.documentElement;
+
+  const height = Math.max( body.scrollHeight,
+    body.offsetHeight,
+    html.clientHeight,
+    html.scrollHeight,
+    html.offsetHeight
+  );
+
+  store.dispatch(resizeWindow(userLogin, course));
+}
 
 document.addEventListener("DOMContentLoaded", function(event) {
   var connection = new RTCMultiConnection();
@@ -144,12 +156,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }, 1000);
           }
         }
-      }); 
+      });
     }
 
     ReactDOM.render(
-      <Provider store={store}><App/></Provider>, 
-      document.getElementById('react-root'), 
+      <Provider store={store}><App/></Provider>,
+      document.getElementById('react-root'),
       () => {
         prepareToJoin();
       }

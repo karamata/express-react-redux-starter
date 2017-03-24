@@ -8,17 +8,15 @@ class RightContainer extends React.Component {
   render() {
     const currentOnSmallContainer = this.props.currentOnSmallContainer;
     return (
-      <Grid>
-        <Row>
-          <TopControlContainer></TopControlContainer>
-        </Row>
-        <Row>
-          <SmallRightContainer></SmallRightContainer>
-        </Row>
-        <Row>
-          <AdvertingContainer></AdvertingContainer>
-        </Row>
-      </Grid>
+      <Row>
+        <TopControlContainer></TopControlContainer>
+      </Row>
+      <Row>
+        <SmallRightContainer></SmallRightContainer>
+      </Row>
+      <Row>
+        <AdvertingContainer></AdvertingContainer>
+      </Row>
     );
   }
 }

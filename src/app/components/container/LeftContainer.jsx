@@ -5,14 +5,23 @@ import { connect } from 'react-redux';
 class LeftContainer extends React.Component {
   render() {
     const currentOnLeft = this.props.currentOnLeft;
+    console.log(currentOnLeft);
     return (
-      <Grid>
-        {currentOnLeft && currentOnLeft.component}
-      </Grid>
+      {currentOnLeft}
     );
   }
 }
 
-export default connect(state =>
-   state.currentOnLeft ? state.currentOnLeft : {}
- )(LeftContainer);
+const defaultLeftContainer = () => {
+  return (
+    <div style={{background: '#000'}}>LeftContainer</div>
+  );
+}
+
+const mapStateToProps = state => {
+  return {
+    currentOnLeft: state.currentOnLeft ? state.currentOnLeft : defaultLeftContainer()
+  };
+};
+
+export default connect(mapStateToProps)(LeftContainer);

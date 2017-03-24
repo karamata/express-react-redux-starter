@@ -4,7 +4,9 @@ import { Grid, Row, Col } from 'react-bootstrap';
 class SmallRightContainer extends React.Component {
   render() {
     return (
-      <Grid></Grid>
+      <Row>
+        <Col>SmallRightContainer</Col>
+      </Row>
     );
   }
 }

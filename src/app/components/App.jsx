@@ -8,16 +8,18 @@ class App extends React.Component {
     return (
       <Grid className="class-container" fluid>
         <Row>
-          <Col xs={12} md={8}>
-            <Grid>
-              <LeftContainer/>
-            </Grid>
+          <Col xs={12} md={9}>
+            <LeftContainer/>
           </Col>
-          <Col xs={12} md={4}>
+          <Col xs={12} md={3}>
             <RightContainer/>
           </Col>
         </Row>
-        <Row></Row>
+        <Row>
+          <Col xs={12} md={12}>
+            Footer
+          </Col>
+        </Row>
       </Grid>
     );
   }

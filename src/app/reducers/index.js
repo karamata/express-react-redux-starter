@@ -1,35 +1,32 @@
 import { combineReducers } from 'redux';
 import { ACTION_TYPE } from '../constants';
 
-function openClassReducer(state = {}, action) {
-	console.log('========openClassReducer=========');
-	console.log(state);
-	console.log(action);
-	console.log(action.type);
-	console.log('========openClassReducer=========');
 
-	if(action.type == ACTION_TYPE.OPEN_CLASS) {
-		return {
-			...state,
-			me: action.data.userLogin,
-			course: action.data.course
-		};
-	}
+function openClassReducer(state = {}, action) {
+	return {
+		...state,
+		me: action.data.userLogin,
+		course: action.data.course
+	};
 }
 
 function joinClassReducer(state = {}, action) {
-	if(action.type == ACTION_TYPE.JOIN_CLASS) {
-		return {
-			...state,
-			me: action.data.userLogin,
-			course: action.data.course
-		};
-	}
+	return {
+		...state,
+		me: action.data.userLogin,
+		course: action.data.course
+	};
 }
 
-const rootReducer = combineReducers({
-  openClassReducer,
-  joinClassReducer
-});
+const rootReducer = (state = {}, action) => {
+	switch (action.type) {
+		case ACTION_TYPE.OPEN_CLASS:
+			return openClassReducer(state, action);
+		case ACTION_TYPE.JOIN_CLASS:
+			return joinClassReducer(state, action);
+		default:
+			return state;
+	}
+};
 
 export default rootReducer;
