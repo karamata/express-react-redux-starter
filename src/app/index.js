@@ -5,7 +5,7 @@ import { createStore } from 'redux';
 import App from './components/App';
 import reducers from './reducers';
 import { ROOM_ROLE } from './constants';
-import { openClassAction, joinClassAction} from './actions';
+import { openClassAction, joinClassAction, initBigBoardAction, initMyStreamAction} from './actions';
 
 const store = createStore(reducers)
 
@@ -20,25 +20,14 @@ const course = {
   courseCode: 'FAGWDFAD'
 };
 
-initWindowSize() {
-  const body = document.body;
-  const html = document.documentElement;
-
-  const height = Math.max( body.scrollHeight,
-    body.offsetHeight,
-    html.clientHeight,
-    html.scrollHeight,
-    html.offsetHeight
-  );
-
-  store.dispatch(resizeWindow(userLogin, course));
-}
-
 document.addEventListener("DOMContentLoaded", function(event) {
   var connection = new RTCMultiConnection();
   DetectRTC.load(function() {
     const isAudioEnable = DetectRTC.hasMicrophone;
 	  const isVideoEnable = DetectRTC.hasWebcam;
+
+    // const isAudioEnable = false;
+    // const isVideoEnable = false;
 
     connection.extra = {
 			userId : 1,
@@ -88,7 +77,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
     };
 
     connection.onstream = function(event) {
-      console.log(event);
+        console.log(event);
+        if(event.type === 'local') {
+          store.dispatch(initMyStreamAction(event, userLogin));
+        }
     };
 
     connection.onNewParticipant = function(participantId, userPreferences) {
@@ -145,11 +137,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
               userLogin.roomRole = ROOM_ROLE.STUDENT;
             }
             store.dispatch(joinClassAction(userLogin, course));
+            store.dispatch(initBigBoardAction(connection, userLogin));
           });
         } else {
           if(userLogin.roleType === ROOM_ROLE.CUSTOMER || userLogin.roleType === ROOM_ROLE.TEACHER) {
+            userLogin.roomRole = ROOM_ROLE.TEACHER;
             connection.open(course.courseCode);
             store.dispatch(openClassAction(userLogin, course));
+            store.dispatch(initBigBoardAction(connection, userLogin));
           } else {
             setTimeout(function (argument) {
               prepareToJoin();
