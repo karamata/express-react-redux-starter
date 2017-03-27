@@ -9,15 +9,15 @@ class RightContainer extends React.Component {
     const currentOnSmallContainer = this.props.currentOnSmallContainer;
     return (
       <div>
-        <Row>
+        <div className="row" style={{height: '100px', minHeight: '100px'}}>
           <TopControlContainer></TopControlContainer>
-        </Row>
-        <Row>
+        </div>
+        <div className="row" style={{height: 'calc(100% - 400px)', minHeight: 'calc(100% - 400px)'}}>
           <SmallRightContainer></SmallRightContainer>
-        </Row>
-        <Row>
+        </div>
+        <div className="row" style={{height: '300px', minHeight: '300px'}}>
           <AdvertingContainer></AdvertingContainer>
-        </Row>
+        </div>
       </div>
     );
   }

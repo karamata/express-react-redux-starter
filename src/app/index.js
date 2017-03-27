@@ -5,7 +5,7 @@ import { createStore } from 'redux';
 import App from './components/App';
 import reducers from './reducers';
 import { ROOM_ROLE } from './constants';
-import { openClassAction, joinClassAction, initBigBoardAction, initMyStreamAction} from './actions';
+import { openClassAction, joinClassAction, initBigBoardAction, initMyStreamAction, initSmallBoardAction } from './actions';
 
 const store = createStore(reducers)
 
@@ -138,6 +138,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }
             store.dispatch(joinClassAction(userLogin, course));
             store.dispatch(initBigBoardAction(connection, userLogin));
+            store.dispatch(initSmallBoardAction(connection, userLogin));
           });
         } else {
           if(userLogin.roleType === ROOM_ROLE.CUSTOMER || userLogin.roleType === ROOM_ROLE.TEACHER) {
@@ -145,6 +146,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             connection.open(course.courseCode);
             store.dispatch(openClassAction(userLogin, course));
             store.dispatch(initBigBoardAction(connection, userLogin));
+            store.dispatch(initSmallBoardAction(connection, userLogin));
           } else {
             setTimeout(function (argument) {
               prepareToJoin();

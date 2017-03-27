@@ -15,7 +15,7 @@ class LeftContainer extends React.Component {
   render() {
     const currentOnLeft = this.props.currentOnLeft;
     let html = (
-      <div>
+      <div style={{width: '100%', height: '100%'}}>
         {this.defaultLeftContainer()}
       </div>
     );
@@ -24,11 +24,6 @@ class LeftContainer extends React.Component {
       currentOnLeft.stream.style.width = '100%';
       html = (
           <div style={{width: '100%', height: '100%'}}>
-              <BigBoardContainer/>
-          </div>
-      );
-      html = (
-          <div>
             <BigBoardContainer/>
             <ElementContainer element={currentOnLeft.stream}/>
           </div>

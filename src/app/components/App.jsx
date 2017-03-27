@@ -13,9 +13,9 @@ class App extends React.Component {
           <Col xs={12} md={9} className="class-main-container-left">
             <LeftContainer/>
           </Col>
-          <Col xs={12} md={3}>
+          <div className="col-md-3 col-xs-12" style={{height: '100%', minHeight: '100%'}}>
             <RightContainer/>
-          </Col>
+          </div>
         </Row>
         <Row className="class-footer">
           <Col xs={12} md={12}>

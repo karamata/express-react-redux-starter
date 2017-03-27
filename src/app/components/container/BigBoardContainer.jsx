@@ -16,7 +16,7 @@ class BigBoardContainer extends React.Component {
 
 	render() {
 		return (
-			<div style={{position: 'absolute', width: '100%', height: '100%'}} className="big-board-container" id="big-board-container">
+			<div style={{width: '100%', height: '100%'}} className="big-board-container" id="big-board-container">
 		    </div>
 		);
 	}

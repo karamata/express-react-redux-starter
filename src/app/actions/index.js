@@ -30,8 +30,8 @@ export function initBigBoardAction(connection, userLogin) {
 
 		bigBoardDesigner.addSyncListener(data => {
 			connection.send({
-				userDrawing: userLogin,
-		        drawingData: data
+						userDrawingOnBig: userLogin,
+		        drawingDataOnBig: data
 		    });
 		});
 
@@ -70,6 +70,53 @@ export function initBigBoardAction(connection, userLogin) {
 	}
 }
 
+export function initSmallBoardAction(connection, userLogin) {
+	if(userLogin.roomRole == ROOM_ROLE.TEACHER) {
+		const smallBoardDesigner = new CanvasDesigner();
+
+		smallBoardDesigner.widgetHtmlURL = '/static/widget.html';
+
+		smallBoardDesigner.widgetJsURL = '/static/widget.js';
+
+		smallBoardDesigner.addSyncListener(data => {
+			connection.send({
+				userDrawingOnSmall: userLogin,
+		        drawingDataOnSmall: data
+		    });
+		});
+
+		smallBoardDesigner.setSelected('pencil');
+
+		smallBoardDesigner.setTools({
+			pencil: true,
+		    text: true,
+		    eraser: true,
+		    dragSingle: true,
+			zoom: true
+		});
+
+		return {
+			type: ACTION_TYPE.INIT_SMALL_BOARD,
+			data: {
+				smallBoardDesigner: smallBoardDesigner
+			}
+		};
+	} else {
+		const smallBoardDesigner = new CanvasDesigner();
+
+		smallBoardDesigner.widgetHtmlURL = '/static/widget.html';
+
+		smallBoardDesigner.widgetJsURL = '/static/widget.js';
+
+		return {
+			type: ACTION_TYPE.INIT_SMALL_BOARD,
+			data: {
+				smallBoardDesigner: smallBoardDesigner
+			}
+		};
+	}
+}
+
 export function initMyStreamAction(eventStream, userLogin) {
 	if(userLogin.roomRole === ROOM_ROLE.TEACHER) {
 		if(eventStream.stream && eventStream.stream.isVideo && !eventStream.stream.isScreen) {
@@ -98,4 +145,4 @@ export function initMyStreamAction(eventStream, userLogin) {
 			};
 		}
 	}
-} 
+}

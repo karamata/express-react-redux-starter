@@ -5,7 +5,7 @@ import React from 'react'
 export default class ElementContainer extends React.Component {
   render () {
     return (
-      <div style={{position: 'absolute', height: '100%', display: 'inline-flex', width: '100%'}} ref='container'/>
+      <div style={{height: '100%', display: 'inline-flex', width: '100%'}} ref='container'/>
     )
   }
 

@@ -25,6 +25,13 @@ function initBigBoardReducer (state = {}, action) {
 	};
 }
 
+function initSmallBoardReducer(state = {}, action) {
+	return {
+		...state,
+		smallBoardDesigner: action.data.smallBoardDesigner
+	};
+}
+
 function initMyStream (state = {}, action) {
 	const result = {
 		...state,
@@ -59,6 +66,8 @@ const rootReducer = (state = {}, action) => {
 			return joinClassReducer(state, action);
 		case ACTION_TYPE.INIT_BIG_BOARD:
 			return initBigBoardReducer(state, action);
+		case ACTION_TYPE.INIT_SMALL_BOARD:
+			return initSmallBoardReducer(state, action);
 		case ACTION_TYPE.INIT_MY_STREAM:
 			return initMyStream(state, action);
 		default:
