@@ -2,8 +2,8 @@
 	height: 100%;
 	min-height: 100%;
 	.class-main-container {
-		height: calc(100% - 150px);
-		min-height: calc(100% - 150px);
+		height: calc(100% - 120px);
+		min-height: calc(100% - 120px);
 		.class-main-container-left {
 			height: 100%;
 			min-height: 100%;
@@ -13,7 +13,7 @@
 
 .class-footer {
 	position: absolute;
-	height: 150px;
+	height: 120px;
 	width: 100%;
 	bottom: 0px;
 	padding: 15px;

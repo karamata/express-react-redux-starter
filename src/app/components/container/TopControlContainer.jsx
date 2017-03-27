@@ -11,9 +11,11 @@ class TopControlContainer extends React.Component {
                 <div className="inside" style={{paddingTop: '10px', float: 'right'}}>
                     <p><img src="static/edinnova-logo-text.png" className="img-responsive"/></p>
                     <ul className="list-inline">
-                        <li><a href="#"><img src="static/question-icon.png"/></a></li>
-                        <li><a href="#"><img src="static/switch-icon.png"/></a></li>
-                        <li><a href="#"><img src="static/play-icon.png"/></a></li>
+                        <li><a title="raise your hand to take speach" href="javascript:void(0);"><i style={{fontSize: '1.5em'}} className="fa fa-question-circle" aria-hidden="true"></i></a></li>
+                        <li><a title="share your screen" href="javascript:void(0);"><i style={{fontSize: '1.5em'}} className="fa fa-object-group"></i></a></li>
+                        <li><a title="play youtube video" href="javascript:void(0);"><i style={{fontSize: '1.5em'}} className="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                        <li><a title="play audio file" href="javascript:void(0);"><i style={{fontSize: '1.5em'}} className="fa fa-headphones" aria-hidden="true"></i></a></li>
+                        <li><a title="config your setting" href="javascript:void(0);"><i style={{fontSize: '1.5em'}} className="fa fa-cogs" aria-hidden="true"></i></a></li>
                     </ul>
                 </div>
             </div>
