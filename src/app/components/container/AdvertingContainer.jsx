@@ -4,9 +4,9 @@ import { Grid, Row, Col } from 'react-bootstrap';
 class AdvertingContainer extends React.Component {
   render() {
     return (
-      <Row>
-        <Col>AdvertingContainer</Col>
-      </Row>
+      <div>
+        <div>AdvertingContainer</div>
+      </div>
     );
   }
 }

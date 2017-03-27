@@ -8,15 +8,15 @@ class SmallRightContainer extends React.Component {
   render() {
     const currentOnRight = this.props.currentOnRight;
     let html = (
-      <div style={{width: '100%', height: '100%'}}>
+      <div className="col-xs-12 col-md-12" style={{width: '100%', height: '100%', paddingLeft: '0px'}}>
         <SmallBoardContainer/>
       </div>
     );
 
     if(currentOnRight && currentOnRight.type === 'VIDEO') {
       html = (
-        <div style={{width: '100%', height: '100%'}}>
-          <SmallBoardContainer/>
+        <div className="col-xs-12 col-md-12" style={{width: '100%', height: '100%'}}>
+          <SmallBoardContainer style={{display: 'none'}}/>
           <ElementContainer element={currentOnLeft.stream}/>
         </div>
       );

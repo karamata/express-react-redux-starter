@@ -1,3 +1,17 @@
 .small-board-container#small-board-container {
-
+	.circle {
+		background-color: #b2dcf7;
+	    width: 10px;
+	    height: 10px;
+	    border-radius: 50%;
+	    position: absolute;
+	}
+	.circle.circle-right {
+		right: 25px;
+    	top: 10px;
+	}
+	.circle.circle-left {
+		left: 10px;
+    	top: 10px;
+	}
 }

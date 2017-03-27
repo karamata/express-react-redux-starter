@@ -89,10 +89,8 @@ export function initSmallBoardAction(connection, userLogin) {
 
 		smallBoardDesigner.setTools({
 			pencil: true,
-		    text: true,
 		    eraser: true,
-		    dragSingle: true,
-			zoom: true
+		    dragSingle: true
 		});
 
 		return {

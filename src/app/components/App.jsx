@@ -9,7 +9,7 @@ class App extends React.Component {
   render() {
     return (
       <Grid className="class-container" fluid>
-        <Row className="class-main-container">
+        <Row style={{paddingTop: '15px'}} className="class-main-container">
           <Col xs={12} md={9} className="class-main-container-left">
             <LeftContainer/>
           </Col>

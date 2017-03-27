@@ -16,7 +16,9 @@ class SmallBoardContainer extends React.Component {
 
 	render() {
 		return (
-			<div style={{width: '100%', height: '100%'}} className="small-board-container" id="small-board-container">
+			<div style={{...this.props.style, width: '100%', height: '100%'}} className="small-board-container" id="small-board-container">
+				<div className="circle circle-left"></div>
+				<div className="circle circle-right"></div>
 		    </div>
 		);
 	}
